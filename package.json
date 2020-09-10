@@ -1,0 +1,36 @@
+{
+  "name": "crm-to-pdf",
+  "version": "1.0.0",
+  "description": "Give me your crm user token and I will print a pdf with your KPI (deals, meetings, calls...)",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugoLarrousse/crm-to-pdf.git"
+  },
+  "keywords": [
+    "crm",
+    "pdf",
+    "hubspot"
+  ],
+  "author": "hugo.larrousse@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hugoLarrousse/crm-to-pdf/issues"
+  },
+  "homepage": "https://github.com/hugoLarrousse/crm-to-pdf#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}
