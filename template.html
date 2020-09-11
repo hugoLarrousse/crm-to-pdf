@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Heptaward template 1</title>
+    <!-- width: 792px, height: 1122 -->
+    <style>
+      html,
+      body {
+        -webkit-print-color-adjust: exact;
+        margin: 0;
+        color: white;
+        font-family: 'Trebuchet MS', Arial;
+      }
+
+      /* HEADER */
+      .page {
+        position: relative;
+        width: 792px;
+        height: 1122px;
+        background: rgb(1, 71, 101);
+        background: linear-gradient(90deg, rgba(1, 71, 101, 1) 13%, rgba(19, 84, 112, 1) 72%);
+      }
+
+      .container-sales {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 792px;
+        height: 250px;
+        background: #024766;
+      }
+
+      .sales-name {
+        font-size: 100px;
+        text-align: center;
+      }
+
+
+      /* DEALS */
+      .container-deals {
+        display: flex;
+        flex-flow: column;
+        position: absolute;
+        top: 250px;
+        width: 792px;
+        height: 375px;
+      }
+
+      .deals-title {
+        width: 200px;
+        margin: 20px 0 0 50px;
+        height: 60px;
+        font-size: 40px;
+      }
+
+      .deals-row {
+        display: flex;
+        width: 700px;
+        margin: 0px 0 10px 20px;
+        height: 46px;
+        font-size: 30px;
+        border-bottom: 2px solid #789DAD;
+        padding: 0 0 20px 0;
+        border-radius: 2px;
+      }
+
+      .deals-row .deals-toto {
+        width: 220px;
+      }
+
+      .deals-periods {
+        padding: 0;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .size-number {
+        font-size: 50px;
+      }
+
+      .first-column-container {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      .first-column {
+        width: 150px;
+        background: #FFD155;
+        border-radius: 15px;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 20px;
+        padding: 4px 6px;
+      }
+
+      .first-column-won {
+        background: #22D66E;
+      }
+
+      .first-column-lost {
+        background: #DB597A;
+      }
+
+
+      /* ACTIVITIES */
+      .container-activities {
+        display: flex;
+        flex-flow: column;
+        position: absolute;
+        top: 625px;
+        width: 792px;
+      }
+
+      .first-column-2 {
+        background: #135470;
+      }
+    </style>
+  </head>
+
+  <body>{{#data}}
+    <div class="page">
+      <div class="container-sales">
+        <div class="sales-name">{{user.firstname}} {{user.lastname}}</div>
+      </div>
+      <div class="container-deals">
+        <div class="deals-title">Deals</div>
+        <div class="deals-row deals-periods">
+          <div class="deals-toto"> </div>
+          <div class="deals-toto text-center first"> Last Week</div>
+          <div class="deals-toto text-center"> This Week</div>
+        </div>
+        <div class="deals-row deals-opened">
+          <div class="deals-toto first-column-container">
+            <div class="first-column">Opened</div>
+          </div>
+          <div class="deals-toto text-center size-number"> {{deal.last.open}}</div>
+          <div class="deals-toto text-center size-number"> {{deal.current.open}}</div>
+        </div>
+        <div class="deals-row deals-won">
+          <div class="deals-toto first-column-container">
+            <div class="first-column first-column-won">Won</div>
+          </div>
+          <div class="deals-toto text-center size-number"> {{deal.last.won}}</div>
+          <div class="deals-toto text-center size-number"> {{deal.current.won}}</div>
+        </div>
+        <div class="deals-row deals-lost">
+          <div class="deals-toto first-column-container">
+            <div class="first-column first-column-lost">Lost</div>
+          </div>
+          <div class="deals-toto text-center size-number"> {{deal.last.lost}}</div>
+          <div class="deals-toto text-center size-number"> {{deal.current.lost}}</div>
+        </div>
+      </div>
+
+      <div class="container-activities">
+        <div class="deals-title">Activities</div>
+        <div class="deals-row deals-periods">
+          <div class="deals-toto"> </div>
+          <div class="deals-toto text-center first"> Last Week</div>
+          <div class="deals-toto text-center"> This Week</div>
+        </div>
+        {{#engagements}}
+        <div class="deals-row deals-opened">
+          <div class="deals-toto first-column-container">
+            <div class="first-column first-column-2">{{[0]}}</div>
+          </div>
+          <div class="deals-toto text-center size-number"> {{2}}</div>
+          <div class="deals-toto text-center size-number"> {{[1]}}</div>
+        </div>{{/engagements}}
+        <!-- <div class="deals-row deals-won">
+          <div class="deals-toto first-column-container">
+            <div class="first-column first-column-2">MEETING</div>
+          </div>
+          <div class="deals-toto text-center size-number"> 180</div>
+          <div class="deals-toto text-center size-number"> 250</div>
+        </div>
+        <div class="deals-row deals-lost">
+          <div class="deals-toto first-column-container">
+            <div class="first-column first-column-2">EMAIL</div>
+          </div>
+          <div class="deals-toto text-center size-number"> 300</div>
+          <div class="deals-toto text-center size-number"> 250</div>
+        </div>
+        <div class="deals-row deals-lost">
+          <div class="deals-toto first-column-container">
+            <div class="first-column first-column-2">SOMETHING</div>
+          </div>
+          <div class="deals-toto text-center size-number"> 5</div>
+          <div class="deals-toto text-center size-number"> 8</div>
+        </div> -->
+      </div>
+     
+    </div> {{/data}}
+  </body>
+
+</html>

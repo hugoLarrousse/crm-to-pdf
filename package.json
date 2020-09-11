@@ -23,10 +23,14 @@
   },
   "homepage": "https://github.com/hugoLarrousse/crm-to-pdf#readme",
   "dependencies": {
+    "@hubspot/api-client": "^3.0.1",
+    "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "helmet": "^4.0.0"
+    "handlebars": "^4.7.6",
+    "helmet": "^4.0.0",
+    "puppeteer": "^5.2.1"
   },
   "devDependencies": {
     "eslint": "^7.8.1",
