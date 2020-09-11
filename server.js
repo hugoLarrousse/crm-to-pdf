@@ -91,23 +91,27 @@ app.get('/pdf', async (req, res) => {
   }
 });
 
-// for one coworker
-// app.get('/pdf/:email', async (req, res) => {
-//   try {
-//     // const { calls, meetings } = hubspot.getEngagements(req.token, user.id);
-//     // get deals
-//     // get call
-//     // get meeting
-//     // transform to pdf
-//     res.send('OK');
-//   } catch (e) {
-//     res.status(400).send({ error: true, message: e.message });
-//   }
-// });
+app.use('*', (req, res, next) => {
+  return req.query.email ? next() : res.status(403).send({ error: true, message: 'Email is missing', info });
+});
 
-// app.use('*', (req, res, next) => {
-//   return req.query.email ? next() : res.status(403).send({ error: true, message: 'Email is missing', info });
-// });
+// for one coworker
+app.get('/pdf/:email', async (req, res) => {
+  try {
+    const data = await hubspot.getDataForPdf(req.token, req.query.email);
+    const toSend = {
+      team: data.team,
+      period: `${data.startWeek} - ${Date.now()}`,
+      previousPeriod: `${data.startLastWeek} - ${data.startWeek}`,
+      data: data.count,
+    };
+    await pdf.generatePdf(toSend);
+
+    res.send(toSend);
+  } catch (e) {
+    res.status(400).send({ error: true, message: e.message });
+  }
+});
 
 app.all('*', (req, res) => {
   res.status(400).send(info);

@@ -1,16 +1,12 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
-const utils = require('util');
 const puppeteer = require('puppeteer');
 const hb = require('handlebars');
 
-const readFile = utils.promisify(fs.readFile);
-
 async function getTemplateHtml() {
-  console.log('Loading template file in memory');
   try {
     const invoicePath = path.resolve('./template.html');
-    return await readFile(invoicePath, 'utf8');
+    return await fs.readFile(invoicePath, 'utf8');
   } catch (err) {
     throw Error('no file found');
   }
